@@ -27,5 +27,5 @@ app.get('/profile/:id',profile.handleProfile(db));
 app.put('/image',image.handleImage(db));
 app.post('/image',image.handleApiKey);
 //----------------------routes end
-app.listen(process.env.PORT , ()=>console.log("app is running on 3000 .."));
+app.listen(process.env.PORT , ()=>console.log(`app is running on ${process.env.PORT} ..`));
 
