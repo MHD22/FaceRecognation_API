@@ -10,10 +10,10 @@ const signin=require('./controllers/signin');
 const db = knex({
   client: 'pg',
   connection: {
-    host : '127.0.0.1',
-    user : 'mhd.sad22',
-    password : '',
-    database : 'smart-brain'
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+    rejectUnauthorized: false
+  }
   }
  });
 const app=express();
@@ -27,5 +27,5 @@ app.get('/profile/:id',profile.handleProfile(db));
 app.put('/image',image.handleImage(db));
 app.post('/image',image.handleApiKey);
 //----------------------routes end
-app.listen(3000 , ()=>console.log("app is running on 3000 .."));
+app.listen(process.env.PORT , ()=>console.log("app is running on 3000 .."));
 
